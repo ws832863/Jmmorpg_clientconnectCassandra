@@ -7,9 +7,10 @@ import org.newdawn.slick.SlickException;
 
 /**
  * 
- * @author Michel Montenegro
+ * @author shuo wang
  * 
- * the main class
+ *         the main class,establish connection with server and load client
+ *         resource;
  */
 public class LaunchGame {
 

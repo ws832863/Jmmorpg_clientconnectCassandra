@@ -26,7 +26,7 @@ import com.sun.sgs.client.simple.SimpleClientListener;
  * 
  */
 public class HostConnect implements SimpleClientListener {
-
+	String username = "player1";
 	/** The version of the serialized form of this class. */
 	private static final long serialVersionUID = 1L;
 
@@ -130,7 +130,7 @@ public class HostConnect implements SimpleClientListener {
 
 	@Override
 	public void disconnected(boolean graceful, String reason) {
-		System.out.println(">>>>>>>>>> Disconnected: " + reason +graceful);
+		System.out.println(">>>>>>>>>> Disconnected: " + reason + graceful);
 	}
 
 	@Override
@@ -182,15 +182,15 @@ public class HostConnect implements SimpleClientListener {
 			this.player.setResMagic(Integer.valueOf(msg[21]));
 			this.player.setResPhysical(Integer.valueOf(msg[22]));
 			this.player.setEvasion(Integer.valueOf(msg[23]));
-			this.player.setDateCreate(Date.valueOf("2013-01-01"));//)//Date.valueOf(msg[24]));
+			this.player.setDateCreate(Date.valueOf("2013-01-01"));// )//Date.valueOf(msg[24]));
 			this.player.setOnLine(msg[25]);
-			this.player.setLastAcess(Date.valueOf("2013-01-01"));//Date.valueOf(msg[26]));
+			this.player.setLastAcess(Date.valueOf("2013-01-01"));// Date.valueOf(msg[26]));
 			this.player.setSector(Integer.valueOf(msg[27]));
 			// Dados da Classe
 			this.player.setNameClasse(msg[28]);
 			// Dados da Ra锟�
 			this.player.setRace(msg[29]);
-			//Dados do Mapa
+			// Dados do Mapa
 			this.player.setStartTileHeroPosX(Integer.valueOf(msg[30]));
 			this.player.setStartTileHeroPosY(Integer.valueOf(msg[31]));
 			this.player.setPosition(Integer.valueOf(msg[32]));
@@ -228,9 +228,9 @@ public class HostConnect implements SimpleClientListener {
 
 	@Override
 	public PasswordAuthentication getPasswordAuthentication() {
-		//String player = "admin";	String password = "admin";
-		Random rand=new Random(43);
-		String player = "player3";//+rand.nextInt(1000);	
+		// String player = "admin"; String password = "admin";
+		Random rand = new Random(4);
+		String player = username;// +rand.nextInt(1000);
 		String password = "player";
 		this.login = player;
 		System.out.println("Logging in as " + player);
@@ -315,7 +315,7 @@ public class HostConnect implements SimpleClientListener {
 		public void receivedMessage(ClientChannel channel, ByteBuffer message) {
 			receivedChannelMessage = decodeString(message);
 			System.out.println("[" + channel.getName() + "/ " + channelNumber
-					+ "] " + receivedChannelMessage +"this message works");
+					+ "] " + receivedChannelMessage + "this message works");
 
 		}
 	}
