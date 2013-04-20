@@ -27,8 +27,14 @@ import com.sun.sgs.client.simple.SimpleClientListener;
  */
 public class HostConnect implements SimpleClientListener {
 	String username = "player1";
+	String password = "player";
 	/** The version of the serialized form of this class. */
 	private static final long serialVersionUID = 1L;
+
+	public void setUser(String uname, String pwd) {
+		username = uname;
+		password = pwd;
+	}
 
 	/** The name of the host property. */
 	public static final String HOST_PROPERTY = "tutorial.host";
@@ -229,12 +235,11 @@ public class HostConnect implements SimpleClientListener {
 	@Override
 	public PasswordAuthentication getPasswordAuthentication() {
 		// String player = "admin"; String password = "admin";
-		Random rand = new Random(4);
 		String player = username;// +rand.nextInt(1000);
-		String password = "player";
+		String pwd = password;
 		this.login = player;
 		System.out.println("Logging in as " + player);
-		return new PasswordAuthentication(player, password.toCharArray());
+		return new PasswordAuthentication(player, pwd.toCharArray());
 	}
 
 	@Override

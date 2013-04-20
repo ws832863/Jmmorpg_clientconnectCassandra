@@ -15,14 +15,25 @@ import org.newdawn.slick.SlickException;
 public class LaunchGame {
 
 	public static void main(String[] args) {
+		new LaunchGame("player2", "player");
+	}
+	
+	
+	
+
+	public LaunchGame(String username, String pwd) {
 		try {
+			//darkstar client instance, communicate with the server
 			HostConnect hostConnect = new HostConnect();
-			hostConnect.login();// get connected with the server//shuowang
+			//login with a username and password
+			hostConnect.setUser(username, pwd);
+			hostConnect.login();// get connected with the
 			Game g = new Game("libs/resources.jar", hostConnect);
 			System.out.println("test");
 			g.launch();
-		} catch (SlickException e) {
-			e.printStackTrace();
+
+		} catch (SlickException ex) {
+			ex.printStackTrace();
 		}
 	}
 
